@@ -1,15 +1,69 @@
 classDiagram
-    %% Replace the placeholders below with your actual classes, attributes, methods, and relationships.
-    %% Keep this file updated so it matches your final implementation.
-
-    class ClassName {
-        +type attribute
-        +method() returnType
+    class Owner {
+        +str name
+        +int available_minutes
+        +dict preferences
+        +get_available_time() int
+        +set_preference(key str, value str) None
     }
 
-    class AnotherClass {
-        +type attribute
-        +method() returnType
+    class Pet {
+        +str name
+        +str species
+        +str breed
+        +int age
+        +Owner owner
+        +get_info() str
     }
 
-    ClassName --> AnotherClass : relationship
+    class Task {
+        +str name
+        +int duration_minutes
+        +str priority
+        +str category
+        +str recurrence
+        +str preferred_time_of_day
+        +bool is_completed
+        +get_priority_value() int
+        +is_due_today() bool
+        +mark_complete() None
+    }
+
+    class ScheduledTask {
+        +Task task
+        +str start_time
+        +str end_time
+        +get_duration() int
+        +conflicts_with(other ScheduledTask) bool
+        +to_display_string() str
+    }
+
+    class Scheduler {
+        +Pet pet
+        +list tasks
+        +int available_minutes
+        +sort_by_priority(tasks list) list
+        +filter_by_time(tasks list, remaining int) list
+        +assign_time_slots(tasks list) list
+        +resolve_conflicts(scheduled list) list
+        +generate_plan() DailyPlan
+    }
+
+    class DailyPlan {
+        +Pet pet
+        +list scheduled_tasks
+        +int total_duration
+        +str date
+        +add_task(task ScheduledTask) None
+        +get_total_duration() int
+        +get_summary() str
+        +explain_reasoning() str
+    }
+
+    Owner "1" --> "1" Pet : owns
+    Pet "1" --> "*" Task : has
+    Scheduler --> Pet : schedules for
+    Scheduler --> "*" Task : processes
+    Scheduler --> DailyPlan : produces
+    DailyPlan --> "*" ScheduledTask : contains
+    ScheduledTask --> Task : wraps

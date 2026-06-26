@@ -4,9 +4,15 @@
 
 **a. Initial design**
 
-- Initial commit
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
+- Add Pets
+- Add tasks
+- Add basic owner info
+- Track tast times
+- Output full schedule
+- Notify of time comflicts
+- Edit tasks / user / pet information
+- Consider constraints - time, cost, duration, priority
+- Explain why daily plan is generated that way (priority, time constraints, owner preferences)
 
 **b. Design changes**
 
