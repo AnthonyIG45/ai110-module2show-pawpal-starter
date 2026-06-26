@@ -29,6 +29,13 @@ Classes:
 
 - Everything else basically stayed untouched.
 
+- Made a final change to the general structure of the classes and how I want everything to act. New class list:
+
+    Owner "1" --> "*" Pet : owns
+    Pet "1" --> "*" Task : has
+    Scheduler --> Pet : schedules for
+    Scheduler --> "*" Task : processes
+
 ---
 
 ## 2. Scheduling Logic and Tradeoffs

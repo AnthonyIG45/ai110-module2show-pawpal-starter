@@ -44,15 +44,103 @@ pip install -r requirements.txt
 
 ## 🖥️ Sample Output
 
-Paste a sample of your app's CLI or Streamlit output here so a reader can see what a generated plan looks like:
+Generating daily plan for Biscuit...
 
-```
-# e.g.:
-# Daily plan for Biscuit (Golden Retriever):
-#   08:00 — Morning walk (30 min) [priority: high]
-#   09:00 — Feeding (10 min) [priority: high]
-#   ...
-```
+==================================================
+  Schedule for Biscuit (Dog — Golden Retriever, age 3)  (Daily Plan)
+==================================================
+
+  2026-06-25
+  ------------------------------
+    08:00 AM - 08:10 AM  |  Feeding [high]  (10 min)
+    08:10 AM - 08:40 AM  |  Morning Walk [high]  (30 min)
+    08:40 AM - 09:00 AM  |  Grooming [low]  (20 min)
+
+  Total scheduled: 3 task(s)
+  Total skipped:   0 task(s)
+
+  Reasoning:
+  Scheduled 3 task(s) for Biscuit:
+    - Feeding (priority: high, 10 min)
+    - Morning Walk (priority: high, 30 min)
+    - Grooming (priority: low, 20 min)
+==================================================
+
+Generating weekly plan for Whiskers...
+
+==================================================
+  Schedule for Whiskers (Cat — Tabby, age 5)  (Weekly Plan)
+==================================================
+
+  2026-06-25
+  ------------------------------
+    08:00 AM - 08:10 AM  |  Feeding [high]  (10 min)
+    08:10 AM - 08:25 AM  |  Litter Box [medium]  (15 min)
+    08:25 AM - 08:45 AM  |  Playtime [low]  (20 min)
+
+  2026-06-26
+  ------------------------------
+    08:00 AM - 08:10 AM  |  Feeding [high]  (10 min)
+    08:10 AM - 08:25 AM  |  Litter Box [medium]  (15 min)
+    08:25 AM - 08:45 AM  |  Playtime [low]  (20 min)
+
+  2026-06-27
+  ------------------------------
+    08:00 AM - 08:10 AM  |  Feeding [high]  (10 min)
+    08:10 AM - 08:25 AM  |  Litter Box [medium]  (15 min)
+    08:25 AM - 08:45 AM  |  Playtime [low]  (20 min)
+
+  2026-06-28
+  ------------------------------
+    08:00 AM - 08:10 AM  |  Feeding [high]  (10 min)
+    08:10 AM - 08:25 AM  |  Litter Box [medium]  (15 min)
+    08:25 AM - 08:45 AM  |  Playtime [low]  (20 min)
+
+  2026-06-29
+  ------------------------------
+    08:00 AM - 08:10 AM  |  Feeding [high]  (10 min)
+    08:10 AM - 08:25 AM  |  Litter Box [medium]  (15 min)
+    08:25 AM - 08:45 AM  |  Playtime [low]  (20 min)
+
+  2026-06-30
+  ------------------------------
+    08:00 AM - 08:10 AM  |  Feeding [high]  (10 min)
+    08:10 AM - 08:25 AM  |  Litter Box [medium]  (15 min)
+    08:25 AM - 08:45 AM  |  Playtime [low]  (20 min)
+
+  2026-07-01
+  ------------------------------
+    08:00 AM - 08:10 AM  |  Feeding [high]  (10 min)
+    08:10 AM - 08:25 AM  |  Litter Box [medium]  (15 min)
+    08:25 AM - 08:45 AM  |  Playtime [low]  (20 min)
+
+  Total scheduled: 21 task(s)
+  Total skipped:   0 task(s)
+
+  Reasoning:
+  Scheduled 21 task(s) for Whiskers:
+    - Feeding (priority: high, 10 min)
+    - Litter Box (priority: medium, 15 min)
+    - Playtime (priority: low, 20 min)
+    - Feeding (priority: high, 10 min)
+    - Litter Box (priority: medium, 15 min)
+    - Playtime (priority: low, 20 min)
+    - Feeding (priority: high, 10 min)
+    - Litter Box (priority: medium, 15 min)
+    - Playtime (priority: low, 20 min)
+    - Feeding (priority: high, 10 min)
+    - Litter Box (priority: medium, 15 min)
+    - Playtime (priority: low, 20 min)
+    - Feeding (priority: high, 10 min)
+    - Litter Box (priority: medium, 15 min)
+    - Playtime (priority: low, 20 min)
+    - Feeding (priority: high, 10 min)
+    - Litter Box (priority: medium, 15 min)
+    - Playtime (priority: low, 20 min)
+    - Feeding (priority: high, 10 min)
+    - Litter Box (priority: medium, 15 min)
+    - Playtime (priority: low, 20 min)
+==================================================
 
 ## 🧪 Testing PawPal+
 
@@ -68,7 +156,15 @@ Sample test output:
 
 ```
 # Paste your pytest output here
-```
+
+============================================================== test session starts ======================================================================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0
+rootdir: C:\Users\agoines\Desktop\Computer Shit (1)\Code\CodePath\ai110-module2show-pawpal-starter
+collected 2 items                                                                                                                                                                                                                                 
+
+tests\test_pawpal.py ..                                                                                                                                                                                                                     [100%]
+
+===================================================== 2 passed in 0.01s =================================================================================
 
 ## 📐 Smarter Scheduling
 

@@ -1,8 +1,15 @@
 classDiagram
     class Owner {
-        +str name
+        +str first_name
+        +str last_name
+        +str email
         +int available_minutes
         +dict preferences
+        +list pets
+        +name() str
+        +add_pet(pet Pet) None
+        +remove_pet(pet_name str) None
+        +get_all_tasks() list
         +get_available_time() int
         +set_preference(key str, value str) None
     }
@@ -13,6 +20,10 @@ classDiagram
         +str breed
         +int age
         +Owner owner
+        +list tasks
+        +add_task(task Task) None
+        +remove_task(task_name str) None
+        +edit_task(task_name str) None
         +get_info() str
     }
 
@@ -23,47 +34,26 @@ classDiagram
         +str category
         +str recurrence
         +str preferred_time_of_day
+        +date last_completed_date
         +bool is_completed
         +get_priority_value() int
         +is_due_today() bool
         +mark_complete() None
     }
 
-    class ScheduledTask {
-        +Task task
-        +str start_time
-        +str end_time
-        +get_duration() int
-        +conflicts_with(other ScheduledTask) bool
-        +to_display_string() str
-    }
-
     class Scheduler {
         +Pet pet
-        +list tasks
         +int available_minutes
+        +dict preferences
+        +time day_start
         +sort_by_priority(tasks list) list
-        +filter_by_time(tasks list, remaining int) list
-        +assign_time_slots(tasks list) list
-        +resolve_conflicts(scheduled list) list
-        +generate_plan() DailyPlan
+        +filter_by_time(tasks list, remaining int) tuple
+        +assign_time_slots(tasks list, day date) list
+        +resolve_conflicts(slots list) list
+        +generate_plan(period str) dict
     }
 
-    class DailyPlan {
-        +Pet pet
-        +list scheduled_tasks
-        +int total_duration
-        +str date
-        +add_task(task ScheduledTask) None
-        +get_total_duration() int
-        +get_summary() str
-        +explain_reasoning() str
-    }
-
-    Owner "1" --> "1" Pet : owns
+    Owner "1" --> "*" Pet : owns
     Pet "1" --> "*" Task : has
     Scheduler --> Pet : schedules for
     Scheduler --> "*" Task : processes
-    Scheduler --> DailyPlan : produces
-    DailyPlan --> "*" ScheduledTask : contains
-    ScheduledTask --> Task : wraps
