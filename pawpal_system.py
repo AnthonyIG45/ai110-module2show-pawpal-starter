@@ -1,3 +1,6 @@
+from datetime import date, time
+
+
 class Owner:
     def __init__(self, name: str, available_minutes: int, preferences: dict = None):
         self.name = name
@@ -18,6 +21,16 @@ class Pet:
         self.breed = breed
         self.age = age
         self.owner = owner
+        self.tasks: list["Task"] = []
+
+    def add_task(self, task: "Task") -> None:
+        pass
+
+    def remove_task(self, task_name: str) -> None:
+        pass
+
+    def edit_task(self, task_name: str, **updates) -> None:
+        pass
 
     def get_info(self) -> str:
         pass
@@ -32,6 +45,7 @@ class Task:
         category: str,
         recurrence: str = "daily",
         preferred_time_of_day: str = "morning",
+        last_completed_date: date = None,
     ):
         self.name = name
         self.duration_minutes = duration_minutes
@@ -39,6 +53,7 @@ class Task:
         self.category = category
         self.recurrence = recurrence
         self.preferred_time_of_day = preferred_time_of_day
+        self.last_completed_date = last_completed_date
         self.is_completed = False
 
     def get_priority_value(self) -> int:
@@ -52,7 +67,7 @@ class Task:
 
 
 class ScheduledTask:
-    def __init__(self, task: Task, start_time: str, end_time: str):
+    def __init__(self, task: Task, start_time: time, end_time: time):
         self.task = task
         self.start_time = start_time
         self.end_time = end_time
@@ -72,13 +87,16 @@ class DailyPlan:
         self.pet = pet
         self.date = date
         self.scheduled_tasks: list[ScheduledTask] = []
-        self.total_duration = 0
+        self.skipped_tasks: list[tuple[Task, str]] = []
 
     def add_task(self, task: ScheduledTask) -> None:
         pass
 
-    def get_total_duration(self) -> int:
+    def skip_task(self, task: Task, reason: str) -> None:
         pass
+
+    def get_total_duration(self) -> int:
+        return sum(st.task.duration_minutes for st in self.scheduled_tasks)
 
     def get_summary(self) -> str:
         pass
@@ -88,10 +106,12 @@ class DailyPlan:
 
 
 class Scheduler:
-    def __init__(self, pet: Pet, tasks: list[Task], available_minutes: int):
+    def __init__(self, pet: Pet, tasks: list[Task], day_start: time = time(8, 0)):
         self.pet = pet
         self.tasks = tasks
-        self.available_minutes = available_minutes
+        self.available_minutes = pet.owner.available_minutes
+        self.preferences = pet.owner.preferences
+        self.day_start = day_start
 
     def sort_by_priority(self, tasks: list[Task]) -> list[Task]:
         pass
