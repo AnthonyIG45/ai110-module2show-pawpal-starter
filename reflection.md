@@ -14,10 +14,20 @@
 - Consider constraints - time, cost, duration, priority
 - Explain why daily plan is generated that way (priority, time constraints, owner preferences)
 
+Classes:
+    Owner "1" --> "1" Pet : owns
+    Pet "1" --> "*" Task : has
+    Scheduler --> Pet : schedules for
+    Scheduler --> "*" Task : processes
+    Scheduler --> DailyPlan : produces
+    DailyPlan --> "*" ScheduledTask : contains
+    ScheduledTask --> Task : wraps
+
 **b. Design changes**
 
-- Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
+- Made some changes regarding class relationships. Applied the tasks to pets individuall, but kept the task class itself. A pet should have a few tasks that we need to perform with them daily, but we also need somewhere to store those tasks so we dont have to make 1000 copies of "going for a walk" for example.
+
+- Everything else basically stayed untouched.
 
 ---
 
